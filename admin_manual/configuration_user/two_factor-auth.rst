@@ -1,3 +1,5 @@
+.. _two-factor-auth:
+
 =========================
 Two-factor authentication
 =========================
@@ -13,7 +15,7 @@ Several 2FA apps are already available including
 a Telegram/Signal/SMS gateway and `U2F <https://en.wikipedia.org/wiki/Universal_2nd_Factor>`_. 
 
 
-Developers can `build new two-factor provider apps <https://docs.nextcloud.com/server/latest/developer_manual/app/two-factor-provider.html>`_.
+Developers can `build new two-factor provider apps <https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/two-factor-provider.html>`_.
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -31,6 +33,16 @@ Once 2FA has been enabled, users have to `activate it in their personal settings
 
 .. TODO ON RELEASE: Update version number above on release
 
+Disabling two-factor authentication
+-----------------------------------
+
+Two-factor providers can be disabled via :ref:`occ <occ>`::
+
+ sudo -u www-data php occ twofactorauth:disable <uid> <provider_id>
+
+User are free to enable this provider again via their personal settings.
+
+.. note:: This operation has to be supported by the provider. If this support is missing, Nextcloud will abort and show an error.
 
 Enforcing two-factor authentication
 -----------------------------------
@@ -39,7 +51,7 @@ By default 2FA is *optional*, hence users are given the choice whether to enable
 it for their account. Admins may enforce the use of 2FA.
 
 
-Enforcement is possible systemwide (all users), for selected groups only and can
+Enforcement is possible system-wide (all users), for selected groups only and can
 also be excluded for certain groups.
 
 
@@ -54,8 +66,13 @@ a user has 2FA enforced:
 * If groups are selected, 2FA is enabled for all members of these. If a user is both in a
   selected *and* excluded group, the selected takes precedence and 2FA is enforced.
 
-.. note:: Should users lose access to their second factor and backup codes,
-  they won't be able to log into their account anymore. As administrator, you
-  can use the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
-  to generate a one-time code for them to log in and unlock their account.
-  You can find out more about the app in its `documentation <https://nextcloud-twofactor-admin.readthedocs.io/en/latest/>`_
+Provider removal
+----------------
+
+Nextcloud keeps records about the enabled two-factor authentication providers of every user. If a provider is simply removed/:ref:`disabled <apps_commands_label>`, Nextcloud will still consider the provider active for the user at login and show a warning like *Could not load at least one of your enabled two-factor auth methods*.
+
+The associations of removed providers can be cleaned up via :ref:`occ <occ>`::
+
+ sudo -u www-data php occ twofactorauth:cleanup <provider_id>
+
+.. warning:: This operation is irreversible. Only run it for providers you do not intend to enable again.

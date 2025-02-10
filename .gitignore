@@ -26,8 +26,13 @@ _build
 *.snag
 
 # Icons files
-developer_manual/design/img
-developer_manual/design/icons.txt
+developer_manual/html_css_design/img
+developer_manual/html_css_design/icons.txt
+
+# OpenAPI file
+developer_manual/_static/openapi.json
+developer_manual/_static/stoplight-elements.js
+developer_manual/_static/stoplight-elements.css
 
 # Exclude Eclipse project
 .project
@@ -45,3 +50,12 @@ venv
 
 # Local History for Visual Studio Code
 .history/
+
+# JetBrains IDEs
+.idea/
+
+Pipfile
+Pipfile.lock
+
+# ack-grep
+.ackrc

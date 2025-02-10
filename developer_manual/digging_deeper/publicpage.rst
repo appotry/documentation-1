@@ -21,7 +21,7 @@ page to enter the password.
 A public page can also call other endpoints. These endpoints operate very similarly
 with the difference that if the user is not properly authenticated it will throw a 404.
 
-It is required that you have a parameter (probaby in your url) with the ``token``. As an example
+It is required that you have a parameter (probably in your url) with the ``token``. As an example
 your ``routes.php`` could look like:
 
 .. code-block:: php
@@ -46,6 +46,7 @@ As said the PublicShareController is a very basic controller. You need to implem
 
 	namespace OCA\Share_Test\Controller;
 
+	use OCP\AppFramework\Http\Attribute\PublicPage;
 	use OCP\AppFramework\PublicShareController;
 
 	class PublicAPIController extends PublicShareController {
@@ -73,8 +74,10 @@ As said the PublicShareController is a very basic controller. You need to implem
 		}
 
 		/**
-		 * Your normal controller function
+		 * Your normal controller function. The following annotation will allow guests
+		 * to open the page as well
 		 */
+		#[PublicPage]
 		public function get() {
 			// Work your magic
 		}
@@ -102,6 +105,7 @@ you also implement the ``verifyPassword`` and ``showShare`` functions.
 	namespace OCA\Share_Test\Controller;
 
 	use OCP\AppFramework\AuthPublicShareController;
+	use OCP\AppFramework\Http\Attribute\PublicPage;
 
 	class PublicDisplayController extends AuthPublicShareController {
 		/**
@@ -139,8 +143,10 @@ you also implement the ``verifyPassword`` and ``showShare`` functions.
 		}
 
 		/**
-		 * Your normal controller function
+		 * Your normal controller function. The following annotation will allow guests
+		 * to open the page as well
 		 */
+		#[PublicPage]
 		public function get() {
 			// Work your magic
 		}

@@ -15,15 +15,26 @@ Routes map a URL and a method to a controller method. Routes are defined inside 
         ],
     ];
 
+.. versionadded:: 29
+
+You can also use attributes on the Controller method to define routes.
+They support all the same parameters (except for ``name`` which is not needed).
+``FrontpageRoute`` has to be used for routes that were in the ``routes`` section and ``ApiRoute`` has to be used for routes that were in the ``ocs`` section.
+
+.. code-block:: php
+
+    #[FrontpageRoute(verb: 'GET', url: '/')]
+
+    #[ApiRoute(verb: 'GET', url: '/')]
 
 The route array contains the following parts:
 
 * **url**: The URL that is matched after */index.php/apps/myapp*
-* **name**: The controller and the method to call; *page#index* is being mapped to *PageController->index()*, *articles_api#drop_latest* would be mapped to *ArticlesApiController->dropLatest()*. The controller in the example above would be stored in :file:`lib/Controller/PageController.php`.
+* **name**: The controller and the method to call; *page#index* is being mapped to *PageController->index()*, *articles_api#drop_latest* would be mapped to *ArticlesApiController->dropLatest()*. The controller in the example above would be stored in :file:`lib/Controller/PageController.php`. This parameter is not needed for the attributes.
 * **verb** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
 * **requirements** (Optional): lets you match and extract URLs that have slashes in them (see :ref:`matching-suburls`)
 * **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/URL for a controller method
-* **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value par array
+* **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value pair array
 
 Extracting values from the URL
 ------------------------------
@@ -37,15 +48,13 @@ It is possible to extract values from the URL to allow RESTful URL design. To ex
     // Request: GET /index.php/apps/myapp/authors/3
 
     // appinfo/routes.php
-    array('name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'),
+    ['name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'],
 
     // controller/authorcontroller.php
     class AuthorController {
-
         public function show(string $id): Response {
             // $id is '3'
         }
-
     }
 
 The identifier used inside the route is being passed into controller method by reflecting the method parameters. So basically if you want to get the value **{id}** in your method, you need to add **$id** to your method parameters.
@@ -69,11 +78,9 @@ Sometimes it is needed to match more than one URL fragment. An example would be 
 
     // controller/authorapicontroller.php
     class AuthorApiController {
-
         public function cors(string $path): Response {
             // $path will be 'my/route'
         }
-
     }
 
 Default values for subURL
@@ -96,10 +103,8 @@ Apart from matching requirements, a subURL may also have a default value. Say yo
     ),
 
     // controller/postcontroller.php
-    class PostController
-    {
-        public function index($page = 1): Response
-        {
+    class PostController {
+        public function index(int $page = 1): Response {
             // $page will be 1
         }
     }
@@ -165,7 +170,7 @@ Sometimes it is useful to turn a route into a URL to make the code independent f
 
         private $urlGenerator;
 
-        public function __construct($appName, IRequest $request,
+        public function __construct(string $appName, IRequest $request,
                                     IURLGenerator $urlGenerator) {
             parent::__construct($appName, $request);
             $this->urlGenerator = $urlGenerator;
@@ -181,13 +186,12 @@ Sometimes it is useful to turn a route into a URL to make the code independent f
             // # needs to be replaced with a . due to limitations and prefixed
             // with your app id
             $route = 'myapp.author_api.do_something';
-            $parameters = array('id' => 3);
+            $parameters = ['id' => 3];
 
             $url = $this->urlGenerator->linkToRoute($route, $parameters);
 
             return new RedirectResponse($url);
         }
-
     }
 
 URLGenerator is case sensitive, so **appName** must match **exactly** the name you use in :doc:`configuration <../basics/storage/configuration>`.

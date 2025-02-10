@@ -13,9 +13,9 @@ can be accessed through::
     $_['key']
 
 
-.. note:: To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use the **p()** function for printing your values. Should you require unescaped printing, **double check for XSS** and use: :php:func:`print_unescaped`.
+.. note:: To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use the **p()** function for printing your values. Should you require unescaped printing, **double check for XSS** and use: :php:func:`print_unescaped()`.
 
-Printing values is done by using the **p()** function, printing HTML is done by using **print_unescaped()**
+Printing values is done by using the :php:func:`p()` function, printing HTML is done by using :php:func:`print_unescaped()`.
 
 :file:`templates/main.php`
 
@@ -26,7 +26,6 @@ Printing values is done by using the **p()** function, printing HTML is done by 
   <?php
   }
 
-  
 Including templates
 -------------------
 
@@ -49,6 +48,9 @@ The parent variables will also be available in the included templates, but shoul
 
 Including CSS and JavaScript
 ----------------------------
+
+.. warning:: This is deprecated, please use ``addScript`` and ``addStyle`` in your controller instead.
+   See :ref:`ApplicationJs` for more information.
 
 To include CSS or JavaScript use the **style** and **script** functions:
 

@@ -2,8 +2,8 @@
 Instruction set for apps
 ========================
 
-Getlist of apps
----------------
+Get list of apps
+----------------
 
 Returns a list of apps installed on the Nextcloud server. Authentication is done 
 by sending a Basic HTTP Authorization 
@@ -23,7 +23,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled -H "OCS-APIRequest: true"
 
 * Gets enabled apps
 
@@ -64,7 +64,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps/files
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps/files -H "OCS-APIRequest: true"
 
 * Get app info for the ``files`` app
 
@@ -90,10 +90,11 @@ XML output
       <id>files</id>
       <name>Files</name>
       <description>File Management</description>
-      <licence>AGPL</licence>
+      <licence>AGPL-3.0-or-later</licence>
       <author>Robin Appelman</author>
       <require>4.9</require>
       <shipped>true</shipped>
+      <active>true</active>
       <standalone></standalone>
       <default_enable></default_enable>
       <types>
@@ -120,7 +121,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor -H "OCS-APIRequest: true"
 
 * Enable the ``files_texteditor`` app
 
@@ -156,7 +157,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
+  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor -H "OCS-APIRequest: true"
 
 * Disable the ``files_texteditor`` app
 

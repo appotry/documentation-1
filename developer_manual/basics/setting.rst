@@ -4,7 +4,7 @@ Settings
 
 .. sectionauthor:: Carl Schwan <carl@carlschwan.eu>
 
-Each Nextcloud applications can provide both personal and admin settings. For this
+Each Nextcloud application can provide both personal and admin settings. For this
 you will need to create a section implementing `IIconSection`. This section will be
 used in the setting sidebar to create a new entry.
 
@@ -19,13 +19,9 @@ In our case we will create an admin section class in **<myapp>/lib/Sections/Note
     use OCP\IURLGenerator;
     use OCP\Settings\IIconSection;
 
-    class NotesAdmin extends IIconSection {
-
-        /** @var IL10N */
-        private $l;
- 
-        /** @var IURLGenerator */
-        private $urlGenerator;
+    class NotesAdmin implements IIconSection {
+        private IL10N $l;
+        private IURLGenerator $urlGenerator;
 
         public function __construct(IL10N $l, IURLGenerator $urlGenerator) {
             $this->l = $l;
@@ -50,7 +46,7 @@ In our case we will create an admin section class in **<myapp>/lib/Sections/Note
     }
 
 
-The next steps is to fill the new admin section with am admin setting. For that, we create a new class
+The next step is to fill the new admin section with am admin setting. For that, we create a new class
 in *<myapp>/lib/Settings/NotesAdmin.php**.
 
 .. code-block:: php
@@ -63,19 +59,9 @@ in *<myapp>/lib/Settings/NotesAdmin.php**.
     use OCP\IL10N;
     use OCP\Settings\ISettings;
 
-    class NotesAdmin extends ISettings {
-
-        /** @var IL10N */
-        private $l;
- 
-        /** @var IURLGenerator */
-        private $urlGenerator;
-
-        /** @var IConfig */
-        private $config;
-
-        /** @var IL10N $l*/
-        private $l;
+    class NotesAdmin implements ISettings {
+        private IL10N $l;
+        private IConfig $config;
 
         public function __construct(IConfig $config, IL10N $l) {
             $this->config = $config;
@@ -124,10 +110,12 @@ The last missing part is to register both classes inside **<myapp>/appinfo/info.
    `<personal>` instead.
 
 Additionally since Nextcloud 23, groups can be granted authorization to access individual
-admin settings (`see admin docs <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/admin_delegation_configuration>`_).
+admin settings (`see admin docs <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/admin_delegation_configuration.html>`_).
 This is a feature that needs to be enabled for each admin setting class.
 To do so, the setting class needs to implement `IDelegatedSettings` instead of `ISettings`
 and implement two additional methods.
+
+.. TODO ON RELEASE: Update version number above on release
 
 .. code-block:: php
 
@@ -139,7 +127,7 @@ and implement two additional methods.
     use OCP\IL10N;
     use OCP\Settings\IDelegatedSettings;
 
-    class NotesAdmin extends IDelegatedSettings {
+    class NotesAdmin implements IDelegatedSettings {
 
         ...
 
@@ -151,7 +139,7 @@ and implement two additional methods.
 
         public function getAuthorizedAppConfig(): array {
             return [
-                // Allow list of regex that the user can modify with this setting.
+                // Allow a list of regex that the user can modify with this setting.
                 'notes' => ['/notes_.*/', '/my_notes_setting/'],
             ];
         }
@@ -159,20 +147,53 @@ and implement two additional methods.
 
 Additionally, if your setting class needs to fetch data or send data to some admin-only
 controllers, you will need to mark the methods in the controller as accessible by the
-setting with annotations.
+setting with attribute.
+
+.. note::
+
+    The attribute is only available in Nextcloud 27 or later. In older versions, the ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)`` annotation can be used.
 
 .. code-block:: php
+    :emphasize-lines: 8
 
     <?php
+    use OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting;
     class NotesSettingsController extends Controller {
         /**
          * Save settings
-         * @PasswordConfirmationRequired
-         * @AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)
          */
+        #[PasswordConfirmationRequired]
+        #[AuthorizedAdminSetting(settings: 'OCA\NotesTutorial\Settings\NotesAdmin')]
+        public function saveSettings($mySetting) {
+            ....
+        }
+        ...
+    }
+
+
+If you have several ``IDelegatedSettings`` classes that are needed for a function, simply add the annotation multiple times.
+them in the key "settings" and they must separate with semi-colons.
+
+.. note::
+
+    If you use the deprecated annotation specify the classes separated by semicolons:
+
+    ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin;OCA\NotesTutorial\Settings\NotesSubAdmin)``
+
+.. code-block:: php
+    :emphasize-lines: 8-9
+
+    <?php
+    use OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting;
+    class NotesSettingsController extends Controller {
+        /**
+         * Save settings
+         */
+        #[PasswordConfirmationRequired]
+        #[AuthorizedAdminSetting(settings: 'OCA\NotesTutorial\Settings\NotesAdmin')]
+        #[AuthorizedAdminSetting(settings: 'OCA\NotesTutorial\Settings\NotesSubAdmin')]
          public function saveSettings($mySetting) {
              ....
          }
          ...
     }
-

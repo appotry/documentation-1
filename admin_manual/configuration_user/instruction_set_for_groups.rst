@@ -23,7 +23,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=adm
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=adm -H "OCS-APIRequest: true"
 
 * Returns list of groups matching the search string.
 
@@ -67,7 +67,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups -d groupid="newgroup"
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups -d groupid="newgroup" -H "OCS-APIRequest: true"
 
 * Adds a new group called ``newgroup``
 
@@ -103,7 +103,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin -H "OCS-APIRequest: true"
 
 * Returns a list of users in the ``admin`` group
 
@@ -145,7 +145,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins
+  $ curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins -H "OCS-APIRequest: true"
 
 * Return the subadmins of the group: ``mygroup``
 
@@ -165,6 +165,49 @@ XML output
       <element>Tom</element>
     </data>
   </ocs>  
+
+Edit data of a single group
+---------------------------
+
+Edits attributes related to a group. Authentication
+is done by sending a Basic HTTP Authorization header.
+
+**Syntax: ocs/v1.php/cloud/groups/{groupid}**
+
+* HTTP method: PUT
+* PUT argument: key, string - the field to edit:
+
+  + displayname
+
+* PUT argument: value, string - the new value for the field
+
+Status codes:
+
+* 100 - successful
+* 101 - not supported by backend
+
+Examples
+^^^^^^^^
+
+::
+
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup -d key="displayname" -d value="My Group Name" -H "OCS-APIRequest: true"
+
+* Updates the display name for the group ``mygroup``
+
+XML output
+^^^^^^^^^^
+
+.. code-block:: xml
+
+  <?xml version="1.0"?>
+  <ocs>
+    <meta>
+      <statuscode>100</statuscode>
+      <status>ok</status>
+    </meta>
+    <data/>
+  </ocs>
 
 Delete a group
 --------------
@@ -186,7 +229,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup
+  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup -H "OCS-APIRequest: true"
 
 * Delete the group ``mygroup``
 

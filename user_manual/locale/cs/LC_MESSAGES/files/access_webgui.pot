@@ -1,20 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2021 Nextcloud GmbH
+# Copyright (C) 2023 Nextcloud GmbH
 # This file is distributed under the same license as the Nextcloud latest User Manual package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2021
+# Pavel Borecki <pavel.borecki@gmail.com>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud latest User Manual latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-13 18:09+0000\n"
+"POT-Creation-Date: 2023-04-17 10:07+0000\n"
 "PO-Revision-Date: 2019-11-07 20:29+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2021\n"
-"Language-Team: Czech (https://www.transifex.com/nextcloud/teams/64236/cs/)\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2023\n"
+"Language-Team: Czech (https://app.transifex.com/nextcloud/teams/64236/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,13 +34,17 @@ msgid ""
 msgstr ""
 "K souborům v Nextcloud je možné přistupovat prostřednictvím jeho webového "
 "rozhraní. Soubory je zde možné vytvářet, zobrazovat jejich náhledy, "
-"upravovat, mazat, sdílet a sdílet dál dalším. Správce vámi používané "
-"instance Nextcloud tyto funkce může vypnout, takže pokud vám některé chybí, "
-"obraťte se na něj."
+"upravovat, mazat, sdílet a sdílet dál dalším. Správce vámi využívaného "
+"Nextcloud tyto funkce může vypnout, takže pokud vám některé chybí, obraťte "
+"se na něj."
+
+#: ../../files/access_webgui.rstNone
+msgid "The Files view screen."
+msgstr "Obrazovka ukazující pohled Soubory."
 
 #: ../../files/access_webgui.rst:14
 msgid "Tagging files"
-msgstr "Opatřování souborů štítky"
+msgstr "Označování souborů štítky"
 
 #: ../../files/access_webgui.rst:16
 msgid ""
@@ -55,11 +59,19 @@ msgstr ""
 "Enter. Všechny štítky jsou systémové a jsou sdílené všemi uživateli daného "
 "Nextcloud serveru."
 
+#: ../../files/access_webgui.rstNone
+msgid "Creating file tags."
+msgstr "Vytváření štítků souborů."
+
 #: ../../files/access_webgui.rst:24
 msgid "Then use the Tags filter on the left sidebar to filter files by tags:"
 msgstr ""
-"Poté použijte filtr Štítků v levém postranním panelu pro filtrování souborů "
-"podle štítků:"
+"Poté je možné soubory podle štítků filtrovat a to použitím filtru štítků v "
+"levém postranním panelu:"
+
+#: ../../files/access_webgui.rstNone
+msgid "Viewing file tags."
+msgstr "Zobrazování štítků souboru."
 
 #: ../../files/access_webgui.rst:30
 msgid "Comments"
@@ -70,9 +82,13 @@ msgid ""
 "Use the Details view to add and read comments on any file or folder. "
 "Comments are visible to everyone who has access to the file:"
 msgstr ""
-"Pokud chcete přidat nebo si přečíst komentář k libovolnému souboru či "
-"složce, použijte pohled Podrobnosti. Komentáře jsou viditelné každému, kdo "
-"má k souboru přístup:"
+"Pokud chcete k libovolnému souboru či složce přidat nebo si přečíst "
+"komentář, použijte pohled Podrobnosti. Komentáře jsou viditelné každému, kdo"
+" má k souboru přístup:"
+
+#: ../../files/access_webgui.rstNone
+msgid "Creating and viewing comments."
+msgstr "Vytváření a zobrazování komentářů."
 
 #: ../../files/access_webgui.rst:39
 msgid "Video player"
@@ -88,14 +104,18 @@ msgid ""
 "US/docs/Web/HTML/Supported_media_formats#Browser_compatibility for supported"
 " multimedia formats in Web browsers."
 msgstr ""
-"Videa je možné přímo v Nexcloud přehrávat aplikací Přehrávač videa a to "
+"Videa je možné přehrávat přímo v Nexcloud aplikací Přehrávač videa a to "
 "pouhým kliknutím na soubor. Zda video takto půjde přehrát závisí na použitém"
-" webovém prohlížeči a formátu videa. Pokud správce vámi využívané instance "
-"Nexcloud zapnul takovéto přehrávání videa, a přesto ve vámi používaném "
-"webovém prohlížeči nefunguje, může se jednat o problém s prohlížečem. Které "
-"formáty multimédií jsou ve webových prohlížečích podporované, naleznete na "
+" webovém prohlížeči a formátu videa. Pokud správce vámi využívaného Nexcloud"
+" zapnul takovéto přehrávání videa a přesto ve vámi používaném webovém "
+"prohlížeči nefunguje, může se jednat o problém s prohlížečem. Které formáty "
+"multimédií jsou ve webových prohlížečích podporované, naleznete v "
 "https://developer.mozilla.org/en-"
 "US/docs/Web/HTML/Supported_media_formats#Browser_compatibility."
+
+#: ../../files/access_webgui.rstNone
+msgid "Watching a movie."
+msgstr "Sledování filmu."
 
 #: ../../files/access_webgui.rst:50
 msgid "File controls"
@@ -121,6 +141,10 @@ msgid "Click the star to the left of the file icon to mark it as a favorite:"
 msgstr ""
 "Kliknutím na hvězdičku vlevo od ikony souboru ho přidáte mezi oblíbené:"
 
+#: ../../files/access_webgui.rst:0
+msgid "Marking Favorite files."
+msgstr "Označování souborů jako oblíbené."
+
 #: ../../files/access_webgui.rst:62
 msgid ""
 "You can also quickly find all of your favorites with the Favorites filter on"
@@ -141,9 +165,17 @@ msgstr ""
 "Přetékací nabídka (tři tečky) zobrazuje podrobnosti o souboru a umožňuje "
 "soubory přejmenovávat, stahovat a mazat:"
 
+#: ../../files/access_webgui.rst:0
+msgid "Overflow menu."
+msgstr "Přetékací nabídka."
+
 #: ../../files/access_webgui.rst:72
 msgid "The Details view shows Activities, Sharing, and Versions information:"
 msgstr "Pohled Podrobnosti zobrazuje informace z Aktivity, Sdílení a Verze:"
+
+#: ../../files/access_webgui.rstNone
+msgid "Details screen."
+msgstr "Obrazovka s podrobnostmi."
 
 #: ../../files/access_webgui.rst:77
 msgid ""
@@ -155,12 +187,16 @@ msgid ""
 " having the option to hide them reduces clutter."
 msgstr ""
 "Ikona ozubeného kolečka **Nastavení** níže vlevo umožňuje zobrazovat nebo "
-"skrývat soubory ve webovém rozhraní Nextloud. Říká se jim také tečkové "
-"soubory, protože jejich názvy začínají na tečku, např. ``.mailfile``. Tečka "
-"operačnímu systému sděluje, že v prohlížečích souborového systému má tyto "
-"soubory skrýt – tedy pokud nezvolíte, že mají být zobrazovány. Obvykle se "
-"jedná o soubory s nastaveními, takže je možnost je skrýt a nemít tak "
-"nepořádek."
+"skrývat skryté soubory ve webovém rozhraní Nextloud. Říká se jim také "
+"tečkové soubory, protože jejich názvy začínají na tečku, např. "
+"``.mailfile``. Tečka operačnímu systému sděluje, že v prohlížečích "
+"souborového systému má tyto soubory skrýt – tedy pokud nezvolíte, že mají "
+"být zobrazovány. Obvykle se jedná o soubory s nastaveními, takže možnost je "
+"skrýt napomáhá udržování přehlednosti."
+
+#: ../../files/access_webgui.rstNone
+msgid "Hiding or displaying hidden files."
+msgstr "Skrývání nebo zobrazování skrytých souborů."
 
 #: ../../files/access_webgui.rst:88
 msgid "Previewing files"
@@ -177,7 +213,7 @@ msgstr ""
 "Kliknutím na název souboru si zobrazíte náhled jeho obsahu (pomocí "
 "vestavěných prohlížečů). Funguje to pro nekomprimované textové soubory, "
 "soubory formátu OpenDocument, videa a obrázky. Případně je toto možné i pro "
-"ostatní typy souborů pokud správce Nextcloud zapnul příslušný modul. Pokud "
+"ostatní typy souborů, pokud správce Nextcloud zapnul příslušný modul. Pokud "
 "Nextcloud nemůže soubor zobrazit, zahájí namísto toho proces jeho stahování "
 "na váš počítač."
 
@@ -194,8 +230,8 @@ msgid ""
 msgstr ""
 "Pro pohyb po složkách v Nextcloud stačí jednoduše kliknout na složku a "
 "otevřít ji tak a pak pomocí tlačítka zpět vámi používaného webového "
-"prohlížeče přejít zpět na předchozí úroveň. Nextcloud také poskytuje lištu s"
-" prvky pro navigaci v horní části oblasti Soubory."
+"prohlížeče přejít zpět na předchozí úroveň. Nextcloud také v horní části "
+"oblasti Soubory poskytuje lištu s prvky pro navigaci."
 
 #: ../../files/access_webgui.rst:105
 msgid "Sharing status icons"
@@ -208,8 +244,12 @@ msgid ""
 "marked:"
 msgstr ""
 "Jakákoli složka, která je sdílena, je označena překryvnou ikonou "
-"``Sdíleno``. Sdílení veřejným odkazem jsou označena symbolem řetězu. "
+"``Sdíleno``. Sdílení veřejným odkazem jsou označena symbolem řetězení. "
 "Nesdílené složky nejsou označené:"
+
+#: ../../files/access_webgui.rstNone
+msgid "Share status icons."
+msgstr "Ikony stavu sdílení."
 
 #: ../../files/access_webgui.rst:114
 msgid "Creating or uploading files and directories"
@@ -222,6 +262,10 @@ msgid ""
 msgstr ""
 "Nahrávejte nebo vytvářejte nové soubory nebo složky přímo v Nextcloud složce"
 " kliknutím na tlačítko *Nové* v aplikaci Soubory:"
+
+#: ../../files/access_webgui.rstNone
+msgid "The New file/folder/upload menu."
+msgstr "Nabídka Nový soubor/složka/nahrání."
 
 #: ../../files/access_webgui.rst:122
 msgid "The *New* button provides the following options:"
@@ -236,7 +280,7 @@ msgid ""
 "Upload files from your computer into Nextcloud. You can also upload files by"
 " dragging and dropping them from your file manager."
 msgstr ""
-"Nahrajte soubory ze svého počítače do Nextcloud. Toto je možné udělat také "
+"Nahrajte soubory do Nextcloud ze svého počítače. Toto je možné udělat také "
 "jejich přetažením ze správce souborů, který v počítači používáte."
 
 #: ../../files/access_webgui.rst:129
@@ -255,7 +299,7 @@ msgstr "Složka"
 
 #: ../../files/access_webgui.rst:132
 msgid "Creates a new folder in the current folder."
-msgstr "Vytvoří novou složku ve složce, ve které se právě nacházíte."
+msgstr "Vytvoří novou složku v té, ve které se právě nacházíte."
 
 #: ../../files/access_webgui.rst:135
 msgid "Selecting files or folders"
@@ -278,8 +322,9 @@ msgid ""
 " as a ZIP file by using the ``Delete`` or ``Download`` buttons that appear "
 "at the top."
 msgstr ""
-"Když vyberete vícero souborů, můžete je smazat všechny, nebo si je stáhnout "
-"jako ZIP soubor pomocí tlačítek ``Smazat`` nebo ``Stáhnout`` nahoře."
+"Když vyberete vícero souborů, můžete je všechny smazat, nebo si je stáhnout "
+"jako ZIP soubor pomocí tlačítek ``Smazat`` nebo ``Stáhnout``, která se "
+"objeví nahoře."
 
 #: ../../files/access_webgui.rst:145
 msgid ""
@@ -297,7 +342,7 @@ msgid ""
 "The left sidebar on the Files page contains several filters for quickly "
 "sorting and managing your files."
 msgstr ""
-"Levý boční panel na stránce Soubory obsahuje několik filtrů pro rychlé "
+"Levý postranní panel na stránce Soubory obsahuje několik filtrů pro rychlé "
 "řazení a správu vašich souborů."
 
 #: ../../files/access_webgui.rst:155
@@ -314,20 +359,20 @@ msgstr "Soubory nebo složky označené žlutou hvězdičkou."
 
 #: ../../files/access_webgui.rst:161
 msgid "Shared with you"
-msgstr "Sdíleno vám"
+msgstr "Nasdíleno vám"
 
 #: ../../files/access_webgui.rst:161
 msgid "Displays all files shared with you by another user or group."
-msgstr "Zobrazí všechny soubory, sdílené vám jiným uživatelem či skupinou."
+msgstr "Zobrazí všechny soubory, nasdílené vám jiným uživatelem či skupinou."
 
 #: ../../files/access_webgui.rst:164
 msgid "Shared with others"
-msgstr "Sdíleno ostatním"
+msgstr "Nasdíleno ostatním"
 
 #: ../../files/access_webgui.rst:164
 msgid "Displays all files that you have shared with other users or groups."
 msgstr ""
-"Zobrazuje všechny souborů, které jste sdíleli ostatním uživatelům či "
+"Zobrazuje všechny soubory, které jste nasdíleli ostatním uživatelům či "
 "skupinám."
 
 #: ../../files/access_webgui.rst:167
@@ -337,7 +382,8 @@ msgstr "Sdíleno odkazem"
 #: ../../files/access_webgui.rst:167
 msgid "Displays all files that are shared by you via public link."
 msgstr ""
-"Zobrazuje všechny soubory, které sdílíte prostřednictvím veřejného odkazu."
+"Zobrazuje všechny soubory, které jste nasdíleli prostřednictvím veřejného "
+"odkazu."
 
 #: ../../files/access_webgui.rst:171
 msgid "External Storage (optional)"
@@ -349,7 +395,7 @@ msgid ""
 "as Amazon S3, SMB/CIFS, FTP…"
 msgstr ""
 "Soubory na externích úložných zařízeních a službách, jako třeba Amazon S3, "
-"SMB/CIFS, FTP…"
+"SMB/CIFS, FTP… ke kterým máte přístup."
 
 #: ../../files/access_webgui.rst:174
 msgid "Moving files"
@@ -364,7 +410,7 @@ msgstr ""
 
 #: ../../files/access_webgui.rst:179
 msgid "Creating or connecting to a Federation Share link"
-msgstr "Vytváření nebo připojování k odkazu federovaného sdílení"
+msgstr "Vytváření nebo připojování k odkazu na federované sdílení"
 
 #: ../../files/access_webgui.rst:181
 msgid ""
@@ -375,5 +421,5 @@ msgid ""
 msgstr ""
 "Federované cloudové sdílení umožňuje připojovat si (mount) sdílení souborů z"
 " ostatních Nextcloud serverů a spravovat je stejně jako místní sdílení. O "
-"tom, jak vytvářet a připojovat se k novým sdílením na federovaném cloudu "
-"pojednává :doc:`federated_cloud_sharing`."
+"tom, jak vytvářet a připojovat se k novým sdílením v rámci federovaném "
+"cloudu pojednává :doc:`federated_cloud_sharing`."
